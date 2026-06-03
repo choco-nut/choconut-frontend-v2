@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@theme {
+  /* Premium Chocolate Palette */
+  --color-cocoa-deep: #4a2c2a;
+  --color-cocoa-light: #6d413e;
+  --color-cream: #fffcf8;
+  --color-amber-accent: #fde68a;
+  /* amber-200 */
+
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-brand: 40px;
+  /* Custom organic curve for chocolate theme */
+}
+
+:root {
+  font-family: "Inter Variable", "Inter", system-ui, sans-serif;
+
+  /* ChocoNut Surface Palette */
+  --background: #fffcf8;
+  /* Cream Base */
+  --foreground: #4a2c2a;
+  /* Deep Cocoa Text */
+  --muted: #f3eae0;
+  /* Softer milk-chocolate cream */
+  --border: #eaddd0;
+  /* Subtle warm borders */
+
+  background-color: var(--background);
+  color: var(--foreground);
+
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Force Light Theme for this specific branding */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #fffcf8;
+    --foreground: #4a2c2a;
+    --muted: #f3eae0;
+  }
+}
+
+/* Custom Toastify Theme */
+.Toastify__toast-container {
+  width: auto;
+  max-width: 400px;
+  padding: 0;
+}
+
+.Toastify__toast {
+  border-radius: 16px;
+  font-family: inherit;
+  box-shadow: 0 10px 30px -10px rgba(74, 44, 42, 0.2);
+  border: 1px solid rgba(74, 44, 42, 0.05);
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.Toastify__toast--success {
+  background: white !important;
+  color: #4a2c2a !important;
+  border-left: 6px solid #4a2c2a !important;
+  /* Cocoa Deep */
+}
+
+.Toastify__toast--info {
+  background: white !important;
+  color: #4a2c2a !important;
+  border-left: 6px solid #6d413e !important;
+  /* Cocoa Light */
+}
+
+.Toastify__toast--error {
+  background: white !important;
+  color: #4a2c2a !important;
+  border-left: 6px solid #d97706 !important;
+  /* Amber Warning */
+}
+
+.Toastify__progress-bar {
+  background: #4a2c2a;
+  opacity: 0.1;
+}
+
+.Toastify__close-button {
+  color: #4a2c2a;
+  opacity: 0.4;
+}
+
+.Toastify__close-button:hover {
+  opacity: 1;
+}
