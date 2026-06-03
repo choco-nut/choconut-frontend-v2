@@ -51,6 +51,7 @@ export default function AddFeedback() {
       return;
     }
     if (rating === 0) return toast.error("Please provide a star rating");
+    if (title.trim().length < 5) return toast.error("Critique headline must be at least 5 characters long");
 
     setSubmitting(true);
     try {
@@ -63,7 +64,23 @@ export default function AddFeedback() {
       toast.success("Your critique has been recorded");
       navigate(`/product/${id}`);
     } catch (error) {
-      toast.error("Submission failed. Please try again.");
+      let errorMsg = "Submission failed. Please try again.";
+      if (error.response?.data) {
+        if (typeof error.response.data === "object") {
+          if (error.response.data.detail) {
+            errorMsg = error.response.data.detail;
+          } else {
+            const messages = Object.entries(error.response.data).map(([key, val]) => {
+              const field = key.charAt(0).toUpperCase() + key.slice(1);
+              return `${field}: ${Array.isArray(val) ? val.join(" ") : val}`;
+            });
+            if (messages.length > 0) {
+              errorMsg = messages.join("\n");
+            }
+          }
+        }
+      }
+      toast.error(errorMsg);
     } finally {
       setSubmitting(false);
     }
